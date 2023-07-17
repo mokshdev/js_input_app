@@ -8,3 +8,8 @@
     font-size: 30px;
 }
 
+.blocks{
+    background-color: red;
+    height: 25vh;
+    width:50vh;
+}
