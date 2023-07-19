@@ -1,5 +1,6 @@
 let array = [];
 
+
 const getElements = (name, age) => {
   array.push({ name, age });
 };
@@ -11,6 +12,62 @@ getElements("kartik", 210);
 const addButtonToDOM = () => {
   let main = document.querySelector(".main");
   main.innerHTML = "";
+
+//   const main = document.querySelector(".main");
+const form = document.createElement("form");
+const formDiv0 = document.createElement("div");
+const label = document.createElement("label");
+const input = document.createElement("input")
+const submit = document.createElement("button")
+
+main.appendChild(form);
+form.classList.add("form");
+form.appendChild(formDiv0);
+
+
+// label 
+formDiv0.appendChild(label);
+label.textContent = "Name:";
+label.for = "name"
+
+// input 
+formDiv0.appendChild(input)
+input.type = "text"
+input.id = "name"
+input.name = "name"
+input.required = "true"
+
+// submit button
+submit.textContent = "submit"
+form.appendChild(submit)
+submit.type = "submit"
+submit.addEventListener("click",function (e) {
+    e.preventDefault()
+    console.log(input.value);    
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === "moksh") {
+            array[i].name = `${input.value}`
+        }
+    }
+    main.innerHTML = "";
+    for (let i = 0; i < array.length; i++) {
+        const name = array[i].name;
+        const age = array[i].age;
+    
+        const div = document.createElement("div");
+        div.classList.add("blocks");
+        div.textContent = `name: ${name}, age of ${name} is: ${age}`;
+        main.appendChild(div);
+    
+        const button = document.createElement("button");
+        button.classList.add("button");
+        button.innerText = name;
+        button.value = name;
+        button.id = name;
+        main.appendChild(button);
+      }
+console.log(array);
+})
 
   for (let i = 0; i < array.length; i++) {
     const name = array[i].name;
@@ -36,6 +93,7 @@ const addButtonToDOM = () => {
       removeName(`${delButton.value}`);
       console.log(array);
       addButtonToDOM(); // Call the function recursively to update the DOM
+      
     });
   });
 };
@@ -54,6 +112,55 @@ const removeName = (delName) => {
 addButtonToDOM(); // Call the function initially to populate the DOM
 
 
+// creating form
+/*const main = document.querySelector(".main");
+const form = document.createElement("form");
+const formDiv0 = document.createElement("div");
+const label = document.createElement("label");
+const input = document.createElement("input")
+const submit = document.createElement("button")
+
+main.appendChild(form);
+form.classList.add("form");
+form.appendChild(formDiv0);
+
+
+// label 
+formDiv0.appendChild(label);
+label.textContent = "Name:";
+label.for = "name"
+
+// input 
+formDiv0.appendChild(input)
+input.type = "text"
+input.id = "name"
+input.name = "name"
+input.required = "true"
+
+// submit button
+submit.textContent = "submit"
+form.appendChild(submit)
+submit.type = "submit"
+
+
+
+// event listener on submit of form
+submit.addEventListener("click",function (e) {
+    e.preventDefault()
+    console.log(input.value);    
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === "moksh") {
+            array[i].name = `${input.value}`
+        }
+    }
+    
+console.log(array);
+})*/
+
+
+
+
+// Add more elements to formDiv1 or perform other operations as needed
 
 // console.log(array);
 
