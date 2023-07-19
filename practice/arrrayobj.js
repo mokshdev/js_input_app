@@ -1,105 +1,58 @@
-let array = []
+let array = [];
 
-const getElements = (name,age)=>{
-    // console.log({name,age});
-    array.push({name,age})
-    // console.log(array);
-    return{
-        name,age
-    }
-}
+const getElements = (name, age) => {
+  array.push({ name, age });
+};
 
-getElements("moksh",12)
-getElements("hitika",15)
-getElements("kartik",210)
-// console.log(array[0].name);
-// if (array[0].age == 12) {
-//     array[0].age = 18
-//     console.log(array);
-// }
+getElements("moksh", 12);
+getElements("hitika", 15);
+getElements("kartik", 210);
 
-let button = document.createElement("button")
+const addButtonToDOM = () => {
+  let main = document.querySelector(".main");
+  main.innerHTML = "";
 
-
-for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     const name = array[i].name;
-    const age = array[i].age
-    // console.log(array[i].name);
-    let main = document.querySelector(".main")
-    const div = document.createElement("div")
-    const button = document.createElement("button")
-    button.classList.add('button')
-    div.classList.add('blocks')
-    button.innerText = `${array[i].name}`
-    button.value = `${array[i].name}`
-    button.id = `${array[i].name}`
-    main.appendChild(div)
-    main.appendChild(button)
-    div.textContent =  `name: ${array[i].name}, age of ${name} is: ${age}`
-    
-    
-    
-}
+    const age = array[i].age;
 
-const delButtons = document.querySelectorAll(".button");
+    const div = document.createElement("div");
+    div.classList.add("blocks");
+    div.textContent = `name: ${name}, age of ${name} is: ${age}`;
+    main.appendChild(div);
 
-
-
-
-const removeName = (delName) => {
-    let main = document.querySelector(".main")
-    while (main.firstChild) {
-        main.removeChild(main.firstChild);
-      }
-
-    const lowName = delName.toLowerCase();
-  
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].name.toLowerCase() === lowName) {
-        array.splice(i, 1);
-        break; // Exit the loop after removing the object
-      }
-    }
-    for (let i = 0; i < array.length; i++) {
-        const name = array[i].name;
-        const age = array[i].age
-        // console.log(array[i].name);
-        let main = document.querySelector(".main")
-        const div = document.createElement("div")
-        const button = document.createElement("button")
-        button.classList.add('button')
-        div.classList.add('blocks')
-        button.innerText = `${array[i].name}`
-        button.value = `${array[i].name}`
-        button.id = `${array[i].name}`
-        main.appendChild(div)
-        main.appendChild(button)
-        div.textContent =  `name: ${array[i].name}, age of ${name} is: ${age}`
-        
-        
-        
-    }
-
+    const button = document.createElement("button");
+    button.classList.add("button");
+    button.innerText = name;
+    button.value = name;
+    button.id = name;
+    main.appendChild(button);
   }
- 
-//   removeName("moksh");
-  
-delButtons.forEach(function(delButton) {
-    delButton.addEventListener('click', function(e) {
+
+  const delButtons = document.querySelectorAll(".button");
+  delButtons.forEach(function (delButton) {
+    delButton.addEventListener("click", function (e) {
       e.preventDefault();
-      removeName(`${delButton.value}`)
+      removeName(`${delButton.value}`);
       console.log(array);
-      /*const lowName = `${delButton.value}`;
-      console.log(`low name is${lowName}`);
-      for (let i = 0; i < array.length; i++) {
-        if (array[i].name.toLowerCase() === lowName) {
-          array.splice(i, 1);
-          break; // Exit the loop after removing the object
-        }
-      }*/
-  
+      addButtonToDOM(); // Call the function recursively to update the DOM
     });
   });
+};
+
+const removeName = (delName) => {
+  const lowName = delName.toLowerCase();
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].name.toLowerCase() === lowName) {
+      array.splice(i, 1);
+      break;
+    }
+  }
+};
+
+addButtonToDOM(); // Call the function initially to populate the DOM
+
 
 
 // console.log(array);
