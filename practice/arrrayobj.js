@@ -9,11 +9,8 @@ getElements("moksh", 12);
 getElements("hitika", 15);
 getElements("kartik", 210);
 
-const addButtonToDOM = () => {
-  let main = document.querySelector(".main");
-  main.innerHTML = "";
-
-//   const main = document.querySelector(".main");
+const modifybutton = (inputName) =>{
+const main = document.querySelector(".main");
 const form = document.createElement("form");
 const formDiv0 = document.createElement("div");
 const label = document.createElement("label");
@@ -45,7 +42,7 @@ submit.addEventListener("click",function (e) {
     e.preventDefault()
     console.log(input.value);    
     for (let i = 0; i < array.length; i++) {
-        if (array[i].name === "moksh") {
+        if (array[i].name === inputName) {
             array[i].name = `${input.value}`
         }
     }
@@ -68,11 +65,19 @@ submit.addEventListener("click",function (e) {
       }
 console.log(array);
 })
+}
+
+
+const addButtonToDOM = () => {
+  let main = document.querySelector(".main");
+  main.innerHTML = "";
+
+    
 
   for (let i = 0; i < array.length; i++) {
     const name = array[i].name;
     const age = array[i].age;
-
+    modifybutton(name)
     const div = document.createElement("div");
     div.classList.add("blocks");
     div.textContent = `name: ${name}, age of ${name} is: ${age}`;
@@ -110,7 +115,11 @@ const removeName = (delName) => {
 };
 
 addButtonToDOM(); // Call the function initially to populate the DOM
-
+let modiTxtBtn = document.querySelector(".modi-txt-btn")
+modiTxtBtn.addEventListener("click",function (e) {
+    e.preventDefault()
+    addButtonToDOM()
+})
 
 // creating form
 /*const main = document.querySelector(".main");
