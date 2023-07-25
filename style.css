@@ -5,11 +5,43 @@
 
 
 .form{
-    font-size: 30px;
+    font-size: 20px;
 }
 
-.blocks{
+.blocks-neo{
     background-color: red;
-    height: 25vh;
-    width:50vh;
+}
+
+
+.blocks{
+    font-size: 20px;
+    color: red;
+    background-color: yellow;
+    padding: 10px;
+    margin: 10px;
+}
+
+.project-details{
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.project-container{
+    background-color: steelblue;
+}
+
+.side-bar{
+    width: 20fr;
+    padding-right: 20px;
+}
+
+.main-box{
+    display: flex;
+}
+.to-do-shown{
+    width: 90vh;
 }

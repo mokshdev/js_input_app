@@ -1,16 +1,6 @@
+import { showProjectModules } from "./arrrayobj.js";
+
 let project = []
-
-let array = []
-const getElements = (name, age,projectNeo) => {
-    array.push({ name, age ,projectNeo});
-  };
-getElements("moksh", 12,"main");
-getElements("hitika", 15,"siblings");
-getElements("kartik", 210,"siblings"); 
-
-
-
-
 
 
 const getProjects = (pName) => {
@@ -21,6 +11,9 @@ const getProjects = (pName) => {
 
   getProjects("main")
   getProjects("siblings")
+
+
+
 
 
 
@@ -42,7 +35,7 @@ export  const addProjectToDOM = () => {
       button.classList.add("button");
       button.innerText = `delete: ${name}`;
       button.value = name;
-      button.id = name;
+      button.id = "name";
       projects.appendChild(button);
 
         //button for showing todo with projectnames lister
@@ -60,37 +53,10 @@ export  const addProjectToDOM = () => {
         e.preventDefault();
         console.log(showBtn.value); // Log the value of the clicked "project-details" button
         // Perform any other actions related to the "project-details" button here
-
+        
+            showProjectModules(showBtn.value)//providing data avout array and showbtn value
     
-            let main = document.querySelector(".main");
-            main.innerHTML = "";//providing preprovided data
-          
             
-              //displaying avaialable data
-            for (let i = 0; i < array.length; i++) {
-              const name = array[i].name;
-              const age = array[i].age;
-              const projectName = array[i].projectNeo
-              
-              if (projectName === showBtn.value) {
-                const div = document.createElement("div");
-                div.classList.add("blocks");
-                div.textContent = `name: ${name}, age of ${name} is: ${age} and the projec is: ${projectName}` ;
-                main.appendChild(div);
-            
-                const button = document.createElement("button");
-                button.classList.add("button");
-                button.innerText = `delete: ${name}`;
-                button.value = name;
-                button.id = name;
-                main.appendChild(button); 
-              }
-              
-              
-
-          
-            
-          };
       })
 
 
@@ -105,7 +71,7 @@ export  const addProjectToDOM = () => {
 
 
 
-  const delteProjects =()=>{
+ const delteProjects =()=>{
     
       const delButtons = document.querySelectorAll(".button");
     delButtons.forEach(function (delButton)/*to select every button with .button id*/ {

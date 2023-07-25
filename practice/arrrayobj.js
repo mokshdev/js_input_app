@@ -1,5 +1,6 @@
 import { modifybutton } from "./modifybutton.js";
 import { addProjectToDOM } from "./project.js";
+
 //initialisation
 //creating the array
 let array = [];
@@ -13,6 +14,51 @@ const getElements = (name, age,projectNeo) => {
 getElements("moksh", 12,"main");
 getElements("hitika", 15,"siblings");
 getElements("kartik", 210,"siblings");
+
+addProjectToDOM()
+
+
+
+export let showProjectModules =(showButtonValue/*value that is to be filtered*/)=>{
+    let showBtnValue = showButtonValue
+    let main = document.querySelector(".main");
+            main.innerHTML = "";//providing preprovided data
+          
+            
+              //displaying avaialable data
+            for (let i = 0; i < array.length; i++) {
+              const name = array[i].name;
+              const age = array[i].age;
+              const projectName = array[i].projectNeo
+              
+              if (projectName === showBtnValue) {
+                const div = document.createElement("div");
+                div.classList.add("blocks");
+                div.textContent = `name: ${name}, age of ${name} is: ${age} and the projec is: ${projectName}` ;
+                main.appendChild(div);
+            
+                const button = document.createElement("button");
+                button.classList.add("button");
+                button.innerText = `delete: ${name}`;
+                button.value = name;
+                button.id = name;
+                main.appendChild(button); 
+                
+              }
+              
+              
+
+        
+            
+          };
+}
+
+
+
+
+
+
+
 
 
 
